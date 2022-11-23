@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-// import 'package:icon_forest/icon_forest.dart';
+import './keys.dart';
 
 class Header extends StatelessWidget implements PreferredSizeWidget{
   final AppBar appBar;
@@ -17,6 +17,7 @@ class Header extends StatelessWidget implements PreferredSizeWidget{
       leading: GestureDetector(
         onTap: () {
           print("Clicked");
+          Keys.key1.currentState?.openDrawer();
         },
         child: Icon(
           Icons.menu,  // add custom icons also
@@ -26,7 +27,8 @@ class Header extends StatelessWidget implements PreferredSizeWidget{
         Padding(
             padding: EdgeInsets.only(right: 20.0),
             child: GestureDetector(
-              onTap: () {},
+              onTap: () {
+              },
               child: Icon(
                 Icons.currency_rupee_outlined,
                 size: 26.0,
