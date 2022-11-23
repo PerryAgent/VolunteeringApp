@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:volunteering_app/splash.dart';
 import './header.dart';
+import './event.dart';
 import './sideBar.dart';
 import './keys.dart';
 
@@ -69,6 +70,8 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent
+        child: EventBox(),
+
       ),
       // floatingActionButton: FloatingActionButton(
       //   tooltip: 'Increment',
