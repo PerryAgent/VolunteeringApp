@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:volunteering_app/main.dart';
+import './home_page.dart';
 
 class Splash extends StatefulWidget {
 
