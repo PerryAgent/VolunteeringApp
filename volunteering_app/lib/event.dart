@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 
 class EventBox extends StatefulWidget {
-  const EventBox({super.key});
+  const EventBox({super.key, required this.eventName, required this.eventPic, required this.timeLeft});
+
+
+  final String eventName; 
+  final String eventPic; 
+  final String timeLeft; 
 
   @override
+
   State<EventBox> createState() => _EventBoxState();
 }
 
 class _EventBoxState extends State<EventBox> {
+ 
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -24,6 +31,9 @@ class _EventBoxState extends State<EventBox> {
         elevation: 10,
         shape : RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
+          side : BorderSide(
+            color: Color(0xff99D98C),
+          )
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -34,9 +44,10 @@ class _EventBoxState extends State<EventBox> {
                 Container(
                   height: 80,
                   width: 80,
+                  child: Image(image: AssetImage(widget.eventPic)),
                 ), 
                 Text(
-                  "Event Name Here",
+                  widget.eventName,
                   style: TextStyle(
                     fontSize: 24,
                   ),
@@ -55,7 +66,7 @@ class _EventBoxState extends State<EventBox> {
                   width: screenWidth * 0.35,
                   child: Center(
                     child : Text(
-                      '00:00:10',
+                      widget.timeLeft,
                       style: TextStyle(
                         fontSize: 20,
                       ),

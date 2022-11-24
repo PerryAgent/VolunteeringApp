@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import './main.dart';
 import './profile.dart';
+import './home_page.dart';
 
 class SideBar extends StatelessWidget {
 

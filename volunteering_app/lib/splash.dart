@@ -3,6 +3,7 @@ import 'package:volunteering_app/main.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:google_fonts/google_fonts.dart';
+import './home_page.dart';
 
 class Splash extends StatelessWidget {
   @override
