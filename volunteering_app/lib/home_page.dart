@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 import './header.dart';
 import './event.dart';
 import './sideBar.dart';
-import './keys.dart';
+
+
+var listofEvents = [ ['Event1', 'images/Event1.png', '0:10:00'], ['Event2', 'images/Event1.png', '0:11:00'], ['Event3', 'images/Event1.png', '0:12:00'] ];
+int counter = 3;
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+  
+  MyHomePage({super.key});
+
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -14,8 +19,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
 
-  var listofEvents = [ ['Event1', 'images/Event1.png', '0:10:00'], ['Event2', 'images/Event1.png', '0:11:00'], ['Event3', 'images/Event1.png', '0:12:00'] ];
-  int counter = 3;
+
 
   void _addEvent(){
     counter++;
@@ -26,7 +30,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      key: Keys.key1,
       drawer: SideBar(),
       appBar: Header(
         appBar: AppBar(),

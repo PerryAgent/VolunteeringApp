@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import './keys.dart';
+import 'package:volunteering_app/profile.dart';
 
 class Header extends StatelessWidget implements PreferredSizeWidget{
   final AppBar appBar;
@@ -13,11 +13,11 @@ class Header extends StatelessWidget implements PreferredSizeWidget{
       title: Text("VoluntMe",
         style: GoogleFonts.comfortaa()
       ),
-      backgroundColor: Colors.greenAccent,
+      backgroundColor: Color(0xFF52b69a),
       leading: GestureDetector(
         onTap: () {
           print("Clicked");
-          Keys.key1.currentState?.openDrawer();
+          Scaffold.of(context).openDrawer();
         },
         child: Icon(
           Icons.menu,  // add custom icons also
@@ -38,7 +38,11 @@ class Header extends StatelessWidget implements PreferredSizeWidget{
         Padding(
             padding: EdgeInsets.only(right: 20.0),
             child: GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) {
+                  return Profile();
+                }));
+              },
               child: Icon(
                   Icons.person_outlined
               ),
