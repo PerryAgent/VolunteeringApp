@@ -3,7 +3,6 @@ import './header.dart';
 import './event.dart';
 import './sideBar.dart';
 
-
 var listofEvents = [ ['Event1', 'images/Event1.png', '0:10:00'], ['Event2', 'images/Event1.png', '0:11:00'], ['Event3', 'images/Event1.png', '0:12:00'] ];
 int counter = 3;
 
@@ -11,15 +10,11 @@ class MyHomePage extends StatefulWidget {
   
   MyHomePage({super.key});
 
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-
-
 
   void _addEvent(){
     counter++;
@@ -46,11 +41,12 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
 
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Color(0xff99D98C),
         onPressed: (){
           _addEvent();
           setState((){});
         },
-        tooltip: 'Increment',
+        tooltip: "Add Event",
         child: const Icon(Icons.add),
       ),
 

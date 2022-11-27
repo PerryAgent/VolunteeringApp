@@ -30,7 +30,7 @@ class Header extends StatelessWidget implements PreferredSizeWidget{
               onTap: () {
               },
               child: Icon(
-                Icons.currency_rupee_outlined,
+                Icons.card_giftcard,
                 size: 26.0,
               ),
             )
@@ -44,7 +44,8 @@ class Header extends StatelessWidget implements PreferredSizeWidget{
                 }));
               },
               child: Icon(
-                  Icons.person_outlined
+                  Icons.person,
+                  size: 30,
               ),
             )
         ),

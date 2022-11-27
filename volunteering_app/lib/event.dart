@@ -3,13 +3,11 @@ import 'package:flutter/material.dart';
 class EventBox extends StatefulWidget {
   const EventBox({super.key, required this.eventName, required this.eventPic, required this.timeLeft});
 
-
   final String eventName; 
   final String eventPic; 
   final String timeLeft; 
 
   @override
-
   State<EventBox> createState() => _EventBoxState();
 }
 
@@ -22,60 +20,60 @@ class _EventBoxState extends State<EventBox> {
 
     return Container(
       // Where you style the container
-      // decoration: BoxDecoration(
-      //   borderRadius: BorderRadius.circular(50)
-      // ),
       height: 150,
       width: screenWidth * 0.9,
       child: Card(
         elevation: 10,
-        shape : RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-          side : BorderSide(
-            color: Color(0xff99D98C),
-          )
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Container(
-                  height: 80,
-                  width: 80,
-                  child: Image(image: AssetImage(widget.eventPic)),
-                ), 
-                Text(
-                  widget.eventName,
-                  style: TextStyle(
-                    fontSize: 24,
+        child: Container(
+          decoration: BoxDecoration(
+              gradient: new LinearGradient(
+                  stops: [0.02, 0.02],
+                  colors: [Color(0xff99D98C), Colors.white]
+              ),
+              borderRadius: new BorderRadius.all(const Radius.circular(6.0))
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Container(
+                    height: 80,
+                    width: 80,
+                    child: Image(image: AssetImage(widget.eventPic)),
                   ),
-                )
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Container(
-                  decoration: BoxDecoration(
-                    color: Color(0x5fB5E48C),
-                    borderRadius: BorderRadius.circular(20)
-                  ),
-                  height: 30,
-                  width: screenWidth * 0.35,
-                  child: Center(
-                    child : Text(
-                      widget.timeLeft,
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
+                  Text(
+                    widget.eventName,
+                    style: TextStyle(
+                      fontSize: 24,
                     ),
                   )
-                )
-              ],
-            )
-          ],
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Color(0x5fB5E48C),
+                      borderRadius: BorderRadius.circular(20)
+                    ),
+                    height: 30,
+                    width: screenWidth * 0.35,
+                    child: Center(
+                      child : Text(
+                        widget.timeLeft,
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                    )
+                  )
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
