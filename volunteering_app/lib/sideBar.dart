@@ -16,7 +16,7 @@ class SideBar extends StatelessWidget {
           children: <Widget>[
             DrawerHeader(
                 child: Center(
-                  child: Text("VoluntMe",
+                  child: Text("Helpp!",
                   style: GoogleFonts.comfortaa(
                     textStyle: TextStyle(color: Colors.white, fontSize: 30)),
                   ),
