@@ -10,8 +10,6 @@ class GoogleSignInHelper extends ChangeNotifier {
   GoogleSignInAccount get user => _user!;
 
   Future googleLogin() async{
-    await _googleSignIn.signOut();
-    await FirebaseAuth.instance.signOut();
 
     final googleUser = await _googleSignIn.signIn();
     if(googleUser == null){
