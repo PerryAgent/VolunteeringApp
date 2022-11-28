@@ -45,11 +45,9 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   icon : FaIcon(FontAwesomeIcons.google, color: Colors.red,),
                   label: Text(" Sign in with Google",),
-                  onPressed: () {                
+                  onPressed: () async {
                     final provider = Provider.of<GoogleSignInHelper>(context, listen: false);
-                    provider.googleLogin();
-                    final user = FirebaseAuth.instance.currentUser!;
-                    print("Reached");
+                    await provider.googleLogin();
                   },
                 )
               ),
@@ -64,7 +62,6 @@ class _LoginPageState extends State<LoginPage> {
 class Interim extends StatefulWidget {
   
   Interim({super.key});
-
 
   @override
   State<Interim> createState() => _InterimState();

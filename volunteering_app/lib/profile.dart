@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import './sideBar.dart';
 import './header.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Profile extends StatefulWidget {
+
+  final _user = FirebaseAuth.instance.currentUser!;
   @override
   State<Profile> createState() => _ProfileState();
 }
@@ -27,17 +29,23 @@ class _ProfileState extends State<Profile> {
             Container(
               height: 80,
               width: 80,
-              child: Image.asset('images/defaultPic.png')
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  image: NetworkImage(widget._user.photoURL!),
+                  fit: BoxFit.fill
+                ),
+              ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Center(
-                    child: Text("Name Here",
+                    child: Text(widget._user.displayName!,
                       style: GoogleFonts.comfortaa(textStyle: TextStyle(fontSize: 15)),)
                 ),
                 Center(
-                    child: Text("Email Here",
+                    child: Text(widget._user.email!,
                       style: GoogleFonts.comfortaa(textStyle: TextStyle(fontSize: 15)),)
                 ),
               ]

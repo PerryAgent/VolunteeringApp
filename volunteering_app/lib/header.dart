@@ -10,7 +10,7 @@ class Header extends StatelessWidget implements PreferredSizeWidget{
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text("Hellp!",
+      title: Text("Helpp!",
         style: GoogleFonts.comfortaa()
       ),
       backgroundColor: Color(0xFF52b69a),

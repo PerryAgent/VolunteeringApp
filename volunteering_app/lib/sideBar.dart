@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import './main.dart';
+import './google_signin_util.dart';
 import './profile.dart';
 import './home_page.dart';
+import './login_page.dart';
 
 class SideBar extends StatelessWidget {
 
@@ -39,21 +40,20 @@ class SideBar extends StatelessWidget {
             Options(name: "Store", id: 5),
             Options(name: "Contact Us", id: 6),
 
-            /* Footer for the side menu
+            // Footer for the side menu
             Container(
               child: Align(
                 alignment: FractionalOffset.bottomCenter,
                 child: Column(
                   children: <Widget>[
-                    Divider(),
-                    ListTile(
-                      title: Text('Footer')),
+                    Divider(
+                      color: Colors.black54,
+                    ),
+                    Options(name: "Log Out", id: -1),
                   ],
                 ),
               ),
             ),
-            */
-
           ],
         ),
       ),
@@ -75,6 +75,11 @@ class Options extends StatelessWidget {
           print("Clicked on " + name);
           Navigator.pop(context);
           switch (id) {
+            case -1: GoogleSignInHelper().logOut();
+                     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) {
+                       return Interim();
+                     }));
+                     break;
             case 0: Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) {
                       return MyHomePage();
                     }));
