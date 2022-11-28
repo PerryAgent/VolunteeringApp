@@ -17,7 +17,6 @@ class GoogleSignInHelper {
       return;
     }
     _user = googleUser;
-    print("HEREE");
     final googleAuth = await googleUser.authentication;
 
     final cred = GoogleAuthProvider.credential( 
