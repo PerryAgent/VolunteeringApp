@@ -29,11 +29,9 @@ class GoogleSignInHelper {
   }
 
   logOut()  async {
-    
     await FirebaseAuth.instance.signOut();
     await _googleSignIn.signOut();
     _googleSignIn.disconnect();
     Interim();
-
   }
 }
