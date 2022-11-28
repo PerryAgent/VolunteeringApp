@@ -46,8 +46,8 @@ class _LoginPageState extends State<LoginPage> {
                   icon : FaIcon(FontAwesomeIcons.google, color: Colors.red,),
                   label: Text(" Sign in with Google",),
                   onPressed: () async {
-                    final provider = Provider.of<GoogleSignInHelper>(context, listen: false);
-                    await provider.googleLogin();
+                    GoogleSignInHelper googleSignInHelper = GoogleSignInHelper();
+                    await googleSignInHelper.googleLogin();
                   },
                 )
               ),

@@ -15,12 +15,11 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) => ChangeNotifierProvider( 
-    create : (context) => GoogleSignInHelper(),
-    child : 
-    MaterialApp(
+  Widget build(BuildContext context){
+    return MaterialApp(
       title: 'Helpp!',
       home: Splash(),
-    ),
-  );
+    );
+  } 
+    
 }
