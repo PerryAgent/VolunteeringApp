@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class EventBox extends StatefulWidget {
-  const EventBox({super.key, required this.eventName, required this.eventPic, required this.timeLeft});
+  const EventBox({super.key, required this.eventName, required this.eventPic, required this.eventDate});
 
   final String eventName; 
   final String eventPic; 
-  final String timeLeft; 
+  final String eventDate;
 
   @override
   State<EventBox> createState() => _EventBoxState();
@@ -66,7 +66,7 @@ class _EventBoxState extends State<EventBox> {
                     width: screenWidth * 0.35,
                     child: Center(
                       child : Text(
-                        widget.timeLeft,
+                        widget.eventDate,
                         style: GoogleFonts.comfortaa(
                           textStyle: TextStyle(
                           fontSize: 20
