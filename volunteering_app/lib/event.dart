@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:firebase_database/firebase_database.dart';
+import './event_page.dart';
 
 class EventBox extends StatefulWidget {
   const EventBox({super.key, required this.eventName, required this.eventPic, required this.eventDate});
@@ -13,6 +15,31 @@ class EventBox extends StatefulWidget {
 }
 
 class _EventBoxState extends State<EventBox> {
+
+  void func(BuildContext context) async {
+    // print(widget.eventName);
+      
+      // HIII
+      Map event = Map();
+      String name = "";
+      final database = await FirebaseDatabase.instance.ref().child("Event").orderByChild("eventName").equalTo(widget.eventName).get().then( (snapshot)  {
+        
+        if(snapshot.exists){
+          event = snapshot.value as Map;
+          var key = event.keys.first;
+          event = event.values.first;
+          print(key);
+          event['key'] = key;
+        }
+        else{
+          print("Not Exists");
+        }
+      });
+      print(event.runtimeType);
+      Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) {
+        return EventPage(eventDetails: event);
+      }));
+  }
  
   @override
   Widget build(BuildContext context) {
@@ -23,7 +50,12 @@ class _EventBoxState extends State<EventBox> {
       // Where you style the container
       height: 150,
       width: screenWidth * 0.9,
-      child: Card(
+      child: GestureDetector(
+    
+        onTap: () { 
+          func(context);
+        },
+        child : Card(
         elevation: 10,
         child: Container(
           decoration: BoxDecoration(
@@ -37,18 +69,27 @@ class _EventBoxState extends State<EventBox> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Container(
                     height: 80,
-                    width: 80,
-                    child: Image(image: AssetImage(widget.eventPic)),
+                    width: 150,
+                    padding: EdgeInsets.fromLTRB(50, 0, 0, 0),
+                    child: Container(
+                      height: 80,
+                      width: 80,
+                      child : Image(image: AssetImage(widget.eventPic))
+                    ),
                   ),
-                  Text(
-                    widget.eventName,
-                    style: GoogleFonts.comfortaa(
-                      textStyle: TextStyle(
-                        fontSize: 24
+                  SizedBox(width: 20),
+                  Flexible(
+                  // padding: EdgeInsets.fromLTRB(50, 0, 0, 0),
+                   child : Text(
+                      widget.eventName,
+                      style: GoogleFonts.comfortaa(
+                        textStyle: TextStyle(
+                          fontSize: 24
+                        ),
                       ),
                     ),
                   ),
@@ -80,7 +121,7 @@ class _EventBoxState extends State<EventBox> {
             ],
           ),
         ),
-      ),
+      ),)
     );
   }
 }

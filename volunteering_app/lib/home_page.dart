@@ -20,11 +20,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   final database = FirebaseDatabase.instance.ref().child('Event/');
-  // database.on("value", function(snapshot) {
-  //   console.log(snapshot.val());
-  // }, function (error) {
-  //   console.log("Error: " + error.code);
-  // });
 
   void _addEvent(){
     counter++;
