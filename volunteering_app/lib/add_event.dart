@@ -103,7 +103,7 @@ class _AddEventState extends State<AddEvent> {
                      'eventDetails': _controller[1].text,
                      'eventDate': _controller[2].text,
                      'numberOfPeople': _controller[3].text,
-                     'dateOfUpload': DateFormat('dd-MM-yyyy').format(DateTime.now())
+                     'dateOfUpload': DateFormat('dd-MM-yyyy').format(DateTime.now()),
                    };
                    database.push().set(newEvent);
                    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) {
