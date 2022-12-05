@@ -19,7 +19,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  final database = FirebaseDatabase.instance.ref().child('Event/');
+  final database = FirebaseDatabase.instance.ref().child('Event/').orderByChild('eventDate');
   // database.on("value", function(snapshot) {
   //   console.log(snapshot.val());
   // }, function (error) {
@@ -46,6 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
               query: database,
               padding: const EdgeInsets.only(bottom: 15),
               itemBuilder : (BuildContext context, DataSnapshot snapshot, Animation<double> animation, int index){
+                
                 Map event = snapshot.value as Map;
                 event['key'] = snapshot.key;
 
