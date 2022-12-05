@@ -107,7 +107,6 @@ class _AddEventState extends State<AddEvent> {
                           if (_validate[ind])
                             required++;
                         }
-
                         setState(() {});
                         if (required == _validate.length) {
                           Map<String, String> newEvent = {
@@ -136,7 +135,7 @@ class _AddEventState extends State<AddEvent> {
                   ],
                 ),
             ),
-          ],
+            ],
         ),
       ),
     );

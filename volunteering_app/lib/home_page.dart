@@ -19,12 +19,16 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+// <<<<<<< HEAD
   final database = FirebaseDatabase.instance.ref().child('Event/').orderByChild('eventDate');
   // database.on("value", function(snapshot) {
   //   console.log(snapshot.val());
   // }, function (error) {
   //   console.log("Error: " + error.code);
   // });
+// =======
+//   final database = FirebaseDatabase.instance.ref().child('Event/');
+// >>>>>>> be8af4ee6a252dd1cfa636be926daa8d06043fd3
 
   void _addEvent(){
     counter++;
