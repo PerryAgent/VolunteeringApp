@@ -123,6 +123,42 @@ class _ApplicantBoxState extends State<ApplicantBox> {
     await database1.update(x);
   }
 
+  rejectUser() async{
+    // final database = FirebaseDatabase.instance.ref().child('Event').child(widget.name.toString()); 
+    Map event = {};
+    
+    // get event details
+    final database = await FirebaseDatabase.instance.ref().child("Event").child(widget.dbKey.toString()).get().then( (snapshot)  {
+        
+      if(snapshot.exists){
+        print(snapshot.value);
+        event = snapshot.value as Map;
+      }
+      else{
+        print("Not Exists");
+      }
+    });
+
+
+    var x = Map<String, dynamic>.from(event);
+
+    if(!x.containsKey('applications')){
+      throw Exception("Applications cannot be empty");
+    }
+
+    x['applications'] = x['applications'].toList(); 
+    
+    if(!x['applications'].contains(widget.name)){
+      throw Exception("User does not exist in applications");
+    }
+
+    x['applications'].remove(widget.name);
+
+    final database1 = FirebaseDatabase.instance.ref().child('Event').child(widget.dbKey.toString()); //child(x['key'].toString());
+
+    await database1.update(x);
+  }
+
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
