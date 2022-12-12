@@ -8,6 +8,9 @@ import 'package:volunteering_app/applications_list.dart';
 import './header.dart';
 import './sideBar.dart';
 
+List<List<bool>> isSelected = <List<bool>> [];
+
+
 class EventPage extends StatefulWidget {
   const EventPage({super.key, required this.eventDetails});
 
@@ -19,7 +22,6 @@ class EventPage extends StatefulWidget {
 
 class _EventPageState extends State<EventPage> {
 
-  @override
   
 
   @override
@@ -66,6 +68,8 @@ class _EventPageState extends State<EventPage> {
 
   Widget build(BuildContext context){
 
+
+
     return  FutureBuilder( 
       future : getEventDetails(),
       builder: (BuildContext context, AsyncSnapshot<DataSnapshot> snapshot){
@@ -100,6 +104,48 @@ class _EventPageState extends State<EventPage> {
         // setState(() {
         //   print("Inside build\n");        
         // });
+
+        Widget displaySlots(){
+          List<Widget> list = <Widget>[];
+          for(var i = 1; i <= int.parse(currentEvent['eventDays']); i++){
+            if(currentEvent.containsKey('day' + i.toString())){
+              List<Object?> temp = currentEvent['day' + i.toString()];
+
+              list.add(
+                Column(
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.fromLTRB(15, 0, 5, 0),
+                      child : Text(
+                      "Day " + i.toString(),
+                      style: GoogleFonts.comfortaa(textStyle: TextStyle(
+                          color: Color.fromRGBO(0, 0, 0, 1),
+                          fontSize: 15 )),
+                      ),
+                    ),
+
+                    Container(
+                      height: 50,
+                      padding: EdgeInsets.fromLTRB(15, 10, 10, 10),
+                      child : GridView(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3, 
+                        crossAxisSpacing: 16),
+                      children: List.generate(currentEvent['day' + i.toString()].length, (index) {
+                        return (
+                          Text(currentEvent['day' + i.toString()][index].toString())
+                        );
+                      })
+                    ),)
+
+                  ],
+                )
+              );
+            }
+          }
+
+          return new Column(children: list);
+        }
 
         return Scaffold(
           backgroundColor: Color(0xffD9ED92),
@@ -325,7 +371,33 @@ class _EventPageState extends State<EventPage> {
               ),
 
               SizedBox(height: 10,),
-              
+              Container(
+                // height: 1000,
+                width: screenWidth - 10,
+                color: Color(0xffD9ED92),
+                padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
+                child : Card(
+                  elevation: 10,
+                  child : Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget> [
+                      SizedBox(height: 10,),
+                      Container(
+                        padding: EdgeInsets.fromLTRB(15, 0, 5, 0),
+                        child : Text(
+                          'Slots',
+                          style: GoogleFonts.comfortaa(textStyle: TextStyle(
+                              color: Color.fromRGBO(0, 0, 0, 1),
+                              fontSize: 20 )),
+                        ),
+
+                      ),
+                      displaySlots(),
+
+                    ]
+                  )
+                )
+              ),
 
               SizedBox(height: 10,),
 
