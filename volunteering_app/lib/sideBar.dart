@@ -80,9 +80,9 @@ class Options extends StatelessWidget {
                        return Interim();
                      }));
                      break;
-            case 0: Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) {
-                      return MyHomePage();
-                    }));
+              case 0: Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) {
+                        return MyHomePage();
+                      }));
                     break;
             case 4: Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) {
                       return Profile();
