@@ -114,7 +114,9 @@ class _AddEventState extends State<AddEvent> {
                         border: InputBorder.none,
                         icon: Icon(Icons.format_list_numbered),
                         hintText: "Number of Days in event",
-                        errorText: !_validate[3] ? "This is a required field" : null,
+                        errorText: !_validate[3] ? "This is a required field" :
+                        (_controller[3].text == "0") ? "Number of days cannot be zero" :
+                        null,
                       ),
                       keyboardType: TextInputType.number,
                       inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly], // Only numbers can
@@ -125,6 +127,8 @@ class _AddEventState extends State<AddEvent> {
                         border: InputBorder.none,
                         icon: Icon(Icons.people),
                         hintText: "Number of people required",
+                        errorText: (_controller[4].text == "0") ? "Number of people cannot be zero" :
+                        null,
                       ),
                       keyboardType: TextInputType.number,
                       inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly], // Only numbers can
@@ -139,6 +143,8 @@ class _AddEventState extends State<AddEvent> {
                             required++;
                         }
                         setState(() {});
+                        if (_controller[3].text == "0" || _controller[4].text == "0")
+                          return;
                         if (required == _validate.length) {
                           event = {
                             'userName': _user.displayName!,
