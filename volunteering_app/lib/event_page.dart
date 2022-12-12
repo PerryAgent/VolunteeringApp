@@ -325,8 +325,11 @@ class _EventPageState extends State<EventPage> {
               ),
 
               SizedBox(height: 10,),
+              
 
-              // POSTED BY
+              SizedBox(height: 10,),
+
+              // Accepted volunteers
               Container(
                 // height: 1000,
                 width: screenWidth - 10,
